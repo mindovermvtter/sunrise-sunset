@@ -1,0 +1,100 @@
+
+<html>
+  <head>
+    <title>Displaying Sunrise/Sunset on a Webpage (template)</title>
+
+<style>
+body {
+  font-size:15px;
+  font-family: monospace;
+  background:#ffffff;
+  color:#626262;
+  text-align: center;
+  text
+}
+div.container4 {
+    height: 10em;
+    position: relative }
+div.container4 p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+</style>
+
+    <script src="https://stevemorse.org/jcal/sunrise.js"></script>
+    <script>
+
+      function Pad(value) {
+        if (value > 9) {
+          return value;
+        } else if (value > 0) {
+          return "0" + value;
+        } else {
+          return "00";
+        }
+      }
+
+      function GetSunriseSunset() {
+
+        // initialize the date
+        var today = new Date();
+        var month = today.getMonth();
+        var day = today.getDate();
+        var year = today.getFullYear();
+        var timezone = today.getTimezoneOffset()/60;
+
+        var latitudeDegrees = 40; // San Francisco
+        var latitudeMinutes = 42; // San Francisco
+        var latitudeSeconds = 9; // San Francisco
+        var longitudeDegrees = 74; // San Francisco
+        var longitudeMinutes = 15; // San Francisco
+        var longitudeSeconds = 41; // San Francisco
+
+        return SunriseSunset(
+          month, day, String(year), String(timezone),
+          String(longitudeDegrees), String(longitudeMinutes), String(longitudeSeconds),
+          String(latitudeDegrees), String(latitudeMinutes), String(latitudeSeconds));
+      } 
+       
+    </script>
+  </head>
+  <body>
+    <div class=container4 onclick = "gfg_Run()">
+    <p>&#127748;
+    <script>
+      var sun = GetSunriseSunset();
+      document.write(Pad(sun.riseHours) + ":" + Pad(sun.riseMinutes));
+    </script>
+    
+    
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+   &#127751;
+    <script>
+      document.write(Pad(sun.setHours) + ":" + Pad(sun.setMinutes));
+    </script>
+    <br></div>
+  </body>
+  
+  
+  
+  <script>
+
+ function changeBackgroundColor(color) { 
+                document.body.style.background = color; 
+            } 
+                      
+function changeTextColor(color) { 
+                document.body.style.color = color;
+            } 
+            
+            function gfg_Run() { 
+                changeBackgroundColor('#2f3437'); 
+                changeTextColor('white'); 
+            }          
+</script>
+  
+</html>
