@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <title>Displaying Sunrise/Sunset on a Webpage (template)</title>
@@ -41,10 +40,10 @@ drop {
 
         var latitudeDegrees = 40; // San Francisco
         var latitudeMinutes = 42; // San Francisco
-        var latitudeSeconds = 9; // San Francisco
+        var latitudeSeconds = 9.0108; // San Francisco
         var longitudeDegrees = 74; // San Francisco
         var longitudeMinutes = 15; // San Francisco
-        var longitudeSeconds = 41; // San Francisco
+        var longitudeSeconds = 41.0328; // San Francisco
 
         return SunriseSunset(
           month, day, String(year), String(timezone),
@@ -59,7 +58,8 @@ drop {
     <drop>&#127748;&#8593;</drop>
     <script>
       var sun = GetSunriseSunset();
-      document.write(Pad(sun.riseHours) + ":" + Pad(sun.riseMinutes));
+      document.write((sun.riseHours) + ":" + Pad(sun.riseMinutes-2) + " AM");
+
     </script>
     
     
@@ -67,7 +67,7 @@ drop {
    
    <drop>&#127751;&#x2193;</drop>
     <script>
-      document.write(Pad(sun.setHours) + ":" + Pad(sun.setMinutes));
+      document.write((sun.setHours-12) + ":" + Pad(sun.setMinutes) + " PM");
     </script>
     <br></span>
   </body>
